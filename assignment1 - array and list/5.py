@@ -1,0 +1,1 @@
+# Write a Python script to create a list of first N terms of a Fabonacci series.
