@@ -18,7 +18,7 @@ class Circle:
     def getCircumference(self):
         return 2 * math.pi * self.radius
     
-# creating class objects
+# creating class object
 c1 = Circle(5)
 print('Circle 1 Radius', c1.getRadius())
 print('Circle 1 Area', c1.getArea())
