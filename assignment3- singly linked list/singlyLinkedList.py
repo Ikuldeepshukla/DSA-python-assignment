@@ -59,6 +59,56 @@ class SLL:
             print(temp.item, end = '->')
             temp = temp.next
 
+    def __iter__(self):
+        return SLLIterator(self.start)
+
+    def delete_first(self):
+        if self.start is not None:
+            self.start = self.start.next
+    
+    def delete_last(self):
+        if self.start is None:
+            pass
+        elif self.start.next is None:
+            self.start = None
+        else:
+            temp = self.start
+            while temp.next.next is not None:
+                temp = temp.next
+            temp.next = None
+    
+    def delete_item(self, item):
+        if self.start is None:
+            pass
+        elif self.start.next is None:
+            if self.start.item == item:
+                self.start = None
+            else:
+                pass
+        else:
+            temp = self.start
+            if temp.item == item:
+                self.start = temp.next
+            else:
+                while temp.next is not None:
+                    if temp.next.item == item:
+                        temp.next = temp.next.next
+                        break
+                    temp = temp.next
+                    
+            
+
+class SLLIterator:
+    def __init__(self, start):
+        self.current = start
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        data = self.current.item
+        self.current = self.current.next
+        return data
 
 # Driver Code
 
@@ -68,4 +118,11 @@ myList.insert_at_start(20)
 myList.insert_at_last(40)
 myList.insert_at_last(30)
 myList.print_list()
+myList.delete_last()
+myList.delete_first()
+myList.delete_item(30)
+
+
+for item in myList:
+    print(item, end='->')
     
